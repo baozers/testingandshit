@@ -1,0 +1,14 @@
+import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+const supabaseUrl = 'https://xiqwcfegzwosvcpdqbto.supabase.co'
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhpcXdjZmVnendvc3ZjcGRxYnRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTQ5MzYxNjAsImV4cCI6MjA3MDUxMjE2MH0.L8izdCi8lnVj8fOTB7rYkr65H3gGc6mXNwYivStIcvU'
+
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+async function testSupabase() {
+  const { data, error } = await supabase.from('messages').select('*')
+  if (error) console.error('Error:', error)
+  else console.log('Success! Data:', data)
+}
+
+testSupabase()
